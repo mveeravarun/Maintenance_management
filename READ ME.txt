@@ -1,0 +1,77 @@
+ README file that provides setup and usage instructions for  Maintenance Management System project:
+
+--------------
+
+# Maintenance Management System
+
+The Maintenance Management System is a console application built in Java that allows users to manage equipment, maintenance schedules, and maintenance logs for a manufacturing plant.
+
+## Setup Instructions
+
+### Prerequisites
+
+- Java Development Kit (JDK) installed (version 8 or higher)
+- MySQL Database Server installed
+- MySQL Connector/J (JDBC driver for MySQL) downloaded
+
+### Steps to Setup
+
+
+1. **Import Project into IDE**
+
+   - Open IntelliJ IDEA (or your preferred IDE).
+   - Select `File` > `Open` and navigate to the cloned project folder.
+   - Select the `pom.xml` file to import the Maven project.
+
+2. **Setup MySQL Database**
+
+   - Start MySQL Server if not already running.
+   - Create a new database named `maintenance_management`.
+
+   ```sql
+   CREATE DATABASE IF NOT EXISTS maintenance_management;
+   ```
+
+   - Create tables using the provided SQL script (`create_tables.sql`) located in the project's `sql` folder. Execute the script in your MySQL database to create the necessary tables (`Equipment`, `MaintenanceSchedule`, `MaintenanceLog`).
+
+3. **Configure Database Connection**
+
+   - Open `DatabaseConnection.java` located in `src/main/java/com/example/util/`.
+   - Modify the database URL, username, and password as per your MySQL setup:
+
+     ```java
+     private static final String URL = "jdbc:mysql://localhost:3306/maintenance_management";
+     private static final String USER = "root";
+     private static final String PASSWORD = "Veera@21022002";
+     ```
+
+4. **Build and Run the Application**
+
+   - Build the project to resolve dependencies.
+   - Run the `MaintenanceManagementApp` class (`src/main/java/com/example/MaintenanceManagementApp.java`) to start the application.
+
+## Usage Instructions
+
+- Upon running the application, you will see a menu-based interface in the console.
+- Use the numeric keys to navigate through different options:
+  - **1:** Add Equipment
+  - **2:** View Equipment
+  - **3:** Update Equipment
+  - **4:** Delete Equipment
+  - **5:** Manage Maintenance Schedules
+  - **6:** Manage Maintenance Logs
+  - **0:** Exit
+
+- Follow the prompts to add, view, update, or delete equipment, manage maintenance schedules, and maintenance logs.
+
+## Troubleshooting
+
+- **Database Connection Issues**: Ensure MySQL server is running and credentials in `DatabaseConnection.java` are correct.
+- **Table Creation Errors**: Double-check SQL script execution (`create_tables.sql`) and database permissions.
+
+## Dependencies
+
+- Java 8 or higher
+- MySQL Database Server
+- MySQL Connector/J (included in Maven dependencies)
+
