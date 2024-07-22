@@ -33,6 +33,60 @@ The Maintenance Management System is a console application built in Java that al
    ```
 
    - Create tables using the provided SQL script (`create_tables.sql`) located in the project's `sql` folder. Execute the script in your MySQL database to create the necessary tables (`Equipment`, `MaintenanceSchedule`, `MaintenanceLog`).
+Database Schema
+
+Equipment Table:
+
+***equipment_id (Primary Key)
+name
+description
+purchase_date
+status (active/inactive)
+
+***Maintenance Schedule Table:
+
+schedule_id (Primary Key)
+equipment_id (Foreign Key references Equipment Table)
+scheduled_date
+status (scheduled/completed/cancelled)
+
+***Maintenance Log Table:
+
+log_id (Primary Key)
+equipment_id (Foreign Key references Equipment Table)
+maintenance_date
+description
+technician_name
+
+***Implementation Details:
+
+DatabaseConnection.java:
+
+Manages database connection using JDBC.
+EquipmentManagement.java:
+
+Handles all operations related to equipment:
+addEquipment()
+viewEquipment()
+updateEquipment()
+deleteEquipment()
+MaintenanceScheduleManagement.java:
+
+Handles all operations related to maintenance schedules:
+scheduleMaintenance()
+viewSchedules()
+updateSchedule()
+cancelSchedule()
+MaintenanceLogManagement.java:
+
+Handles all operations related to maintenance logs:
+logMaintenance()
+viewLogs()
+updateLog()
+deleteLog()
+MaintenanceManagementApp.java:
+
+Provides a menu-driven interface for users to interact with the application.
 
 3. **Configure Database Connection**
 
